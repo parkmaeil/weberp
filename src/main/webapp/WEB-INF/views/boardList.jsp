@@ -15,6 +15,13 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+     function goRegister(){
+       // alert("클릭됨");
+       // 글쓰기 화면을 보여 달라고 컨트롤러에게 요청
+       location.href="/s/boardRegisterGet"; // GET
+     }
+  </script>
 </head>
 <body>
 <div class="container">
@@ -26,6 +33,7 @@
         <th>제목</th>
         <th>작성자</th>
         <th>조회수</th>
+        <th>작성일</th>
       </tr>
     </thead>
     <tbody>
@@ -35,10 +43,12 @@
         <td><%=vo.getTitle()%></td>
         <td><%=vo.getWriter()%></td>
         <td><%=vo.getCount()%></td>
+        <td><%=vo.getIndate()%></td>
       </tr>
     <% } %>
     </tbody>
   </table>
+  <button class="btn btn-info btn-sm" onclick="goRegister()">글쓰기</button>
 </div>
 </body>
 </html>
