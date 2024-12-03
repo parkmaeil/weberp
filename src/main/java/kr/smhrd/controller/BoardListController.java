@@ -1,6 +1,7 @@
 package kr.smhrd.controller;
 
 import kr.smhrd.entity.Board;
+import kr.smhrd.repository.BoardDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,11 +21,8 @@ public class BoardListController extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse resp)
                               throws ServletException, IOException {
         // 가상으로 게시판 리스트를 만들어보자.
-        List<Board> blist=new ArrayList<Board>();
-        // 게시물 3개를 생성해서 List 담기(add)
-        Board b1=new Board(1, "자바 스프링","자바 스프링","관리자",10);
-        blist.add(b1);
-        blist.add(new Board(2, "오라클","오라클","홍길동",15));
+        BoardDAO dao=new BoardDAO();
+        List<Board> blist=dao.findAll();
         // 클라이언트에게 응답 하기(View) --> JSP
         // 1. UI를 만들어서 응답(HTML)
         // 2. JSON, XNL 형태로 만들어서 응답
