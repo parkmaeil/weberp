@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>두수 사이의 총합</h2>
+    <form action="/s/fs" method="post">
+        <div class="form-group">
+            <label for="su1">SU1:</label>
+            <input type="number" class="form-control" id="su1" placeholder="Enter su1" name="su1">
+        </div>
+        <div class="form-group">
+            <label for="su2">SU2:</label>
+            <input type="number" class="form-control" id="su2" placeholder="Enter su2" name="su2">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-danger">초기화</button>
+        <button type="button" class="btn btn-info">일반버튼</button>
+    </form>
+    <a href="/s/fs?su1=5&su2=500">여기를 클릭하세요(GET)</a>
+</div>
+</body>
+</html>

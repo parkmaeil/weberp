@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral() // https://mvnrepository.com/
+}
+
+dependencies { // 필요한 라이브러리(API)를 설정하는 부분
+    // JavaEE API
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+    // MySQL Driver class 다운로드
+    implementation 'mysql:mysql-connector-java:8.0.33'
+    // MyBatis API 다운로드
+    implementation 'org.mybatis:mybatis:3.4.6'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
