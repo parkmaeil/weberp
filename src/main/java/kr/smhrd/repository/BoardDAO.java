@@ -24,4 +24,18 @@ public class BoardDAO {
         }
         return list;
     }
+    // 게시물 데이터를 저장하는 동작
+    public int save(Board board){
+        SqlSession session=MyBatisConnection.openSession();
+        int cnt=-1; // 실패
+        try {
+            cnt=session.insert("save" , board);
+            session.commit(); // 완료
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return cnt; // if(cnt>0), X
+    }
 }
