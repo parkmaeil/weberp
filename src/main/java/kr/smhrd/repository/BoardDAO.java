@@ -38,4 +38,30 @@ public class BoardDAO {
         }
         return cnt; // if(cnt>0), X
     }
+    // 특정 번호에 해당하는 게시물 정보를 가져오기(1개)
+    public Board findById(int num){
+        SqlSession session=MyBatisConnection.openSession();
+        Board board=null;
+        try{
+            board=session.selectOne("findById", num);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return board;
+    }
+
+    // 게시물 번호에 해당하는 게시물 삭제
+    public void deleteById(int num){
+        SqlSession session=MyBatisConnection.openSession();
+        try{
+            session.delete("deleteById", num);
+            session.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 }

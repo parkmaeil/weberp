@@ -12,4 +12,12 @@
         insert into board(title, content, writer)
         values(#{title}, #{content}, #{writer})
     </insert>
+
+    <select id="findById" resultType="kr.smhrd.entity.Board">
+        select * from board where num=#{num}
+    </select>
+
+    <delete id="deleteById">
+        delete from board where num=#{num}
+    </delete>
 </mapper>

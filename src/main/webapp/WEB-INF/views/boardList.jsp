@@ -40,7 +40,7 @@
     <% for(Board vo :  blist){  %>
       <tr>
         <td><%=vo.getNum()%></td>
-        <td><%=vo.getTitle()%></td>
+        <td><a href="/s/boardView?num=<%=vo.getNum()%>"><%=vo.getTitle()%></a></td>
         <td><%=vo.getWriter()%></td>
         <td><%=vo.getCount()%></td>
         <td><%=vo.getIndate()%></td>
