@@ -3,7 +3,10 @@ package kr.smhrd.repository;
 import kr.smhrd.entity.Board;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /*
    Connection = DriverManager
@@ -57,6 +60,36 @@ public class BoardDAO {
         SqlSession session=MyBatisConnection.openSession();
         try{
             session.delete("deleteById", num);
+            session.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+    // 수정하기
+    public void update(Board board) {
+        SqlSession session=MyBatisConnection.openSession();
+        try{
+           session.update("update", board);
+           session.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+    //                          title, content
+    public void update(int num, Board board) {
+        SqlSession session=MyBatisConnection.openSession();
+        try{
+            //board.setNum(num); // ?
+            Map<String, Object> map=new HashMap<>();
+            //       key   value
+            map.put("num", num);
+            map.put("board", board); // board.title, board.content
+
+            session.update("update", map);
             session.commit();
         } catch (Exception e) {
             e.printStackTrace();

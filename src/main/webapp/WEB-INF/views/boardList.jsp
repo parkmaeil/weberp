@@ -1,10 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-<%@ page import="java.util.*"%>
-<%@ page import="kr.smhrd.entity.*"%>
-<%
-   // request객체에 연결된 blist를 가져오기?
-   List<Board> blist=(List<Board>)request.getAttribute("blist");
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,8 +19,8 @@
   </script>
 </head>
 <body>
-<div class="container">
-  <h2>Board List</h2>
+<div class="container mt-5">
+  <h2>Board List(JSTL+EL)</h2>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -37,18 +32,18 @@
       </tr>
     </thead>
     <tbody>
-    <% for(Board vo :  blist){  %>
+    <c:forEach var="vo" items="${blist}">
       <tr>
-        <td><%=vo.getNum()%></td>
-        <td><a href="/s/boardView?num=<%=vo.getNum()%>"><%=vo.getTitle()%></a></td>
-        <td><%=vo.getWriter()%></td>
-        <td><%=vo.getCount()%></td>
-        <td><%=vo.getIndate()%></td>
+        <td>${vo.num}</td>
+        <td><a href="/s/boardView?num=${vo.num}">${vo.title}</a></td>
+        <td>${vo.writer}</td>
+        <td>${vo.count}</td>
+        <td>${vo.indate}</td>
       </tr>
-    <% } %>
+    </c:forEach>
     </tbody>
   </table>
-  <button class="btn btn-info btn-sm" onclick="goRegister()">글쓰기</button>
+  <button class="btn btn-primary btn-sm" onclick="goRegister()">글쓰기</button>
 </div>
 </body>
 </html>

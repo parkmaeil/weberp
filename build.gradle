@@ -10,6 +10,8 @@ repositories {
 }
 
 dependencies { // 필요한 라이브러리(API)를 설정하는 부분
+    // JSTL 라이브러리 다운로드
+    implementation 'javax.servlet:jstl:1.2'
     // JavaEE API
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
     // MySQL Driver class 다운로드

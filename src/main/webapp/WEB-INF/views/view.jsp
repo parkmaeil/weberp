@@ -1,8 +1,4 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-<%@ page import="kr.smhrd.entity.*"%>
-<%
-       Board board=(Board)request.getAttribute("board");
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,39 +15,38 @@
         if(mode=="L"){
            location.href="/s/boardList"; // 리스트보기
         }else if(mode=="U"){
-          //
+           location.href="/s/boardModifyGet?num="+num; // GET
         }else if(mode=="D"){
            location.href="/s/boardRemove?num="+num; // GET
         }
      }
-
   </script>
 </head>
 <body>
 
-<div class="container">
+<div class="container mt-5">
   <h2>Board View</h2>
     <table class="table table-bordered">
       <tr>
         <td>번호</td>
-        <td><%=board.getNum()%></td>
+        <td>${board.num}</td>
       </tr>
       <tr>
         <td>제목</td>
-        <td><%=board.getTitle()%></td>
+        <td>${board.title}</td>
       </tr>
       <tr>
         <td>내용</td>
-        <td><%=board.getContent()%></td>
+        <td>${board.content}</td>
       </tr>
       <tr>
         <td>작성자</td>
-        <td><%=board.getWriter()%></td>
+        <td>${board.writer}</td>
       </tr>
     </table>
     <button type="button" class="btn btn-primary btn-sm" onclick="goFn('L')">목록</button>
-    <button type="button" class="btn btn-warning btn-sm" onclick="goFn('U')">수정</button>
-    <button type="button" class="btn btn-danger btn-sm" onclick="goFn('D',<%=board.getNum()%>)">삭제</button>
+    <button type="button" class="btn btn-warning btn-sm" onclick="goFn('U',${board.num})">수정</button>
+    <button type="button" class="btn btn-danger btn-sm" onclick="goFn('D',${board.num})">삭제</button>
 </div>
 
 </body>

@@ -20,4 +20,11 @@
     <delete id="deleteById">
         delete from board where num=#{num}
     </delete>
+
+    <update id="update" parameterType="java.util.Map">
+        update board
+        set title=#{board.title}, content=#{board.content}
+        where num=#{num}
+    </update>
+
 </mapper>
