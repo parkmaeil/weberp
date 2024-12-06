@@ -1,4 +1,10 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="cpath" value="${pageContext.request.contextPath}"/>
+<%
+   pageContext.setAttribute("newLine", "\n");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,11 +19,11 @@
      function goFn(mode, num){
         console.log(mode);
         if(mode=="L"){
-           location.href="/s/boardList"; // 리스트보기
+           location.href="${cpath}/boardList"; // 리스트보기
         }else if(mode=="U"){
-           location.href="/s/boardModifyGet?num="+num; // GET
+           location.href="${cpath}/boardModifyGet?num="+num; // GET
         }else if(mode=="D"){
-           location.href="/s/boardRemove?num="+num; // GET
+           location.href="${cpath}/boardRemove?num="+num; // GET
         }
      }
   </script>
@@ -37,7 +43,7 @@
       </tr>
       <tr>
         <td>내용</td>
-        <td>${board.content}</td>
+        <td>${fn:replace(board.content,newLine,"<br/>")}</td>
       </tr>
       <tr>
         <td>작성자</td>

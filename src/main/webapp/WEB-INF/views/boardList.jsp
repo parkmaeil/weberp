@@ -1,5 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<c:set var="cpath" value="${pageContext.request.contextPath}"/>
+<%
+   pageContext.setAttribute("newLine", "\n");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +20,8 @@
      function goRegister(){
        // alert("클릭됨");
        // 글쓰기 화면을 보여 달라고 컨트롤러에게 요청
-       location.href="/s/boardRegisterGet"; // GET
+       // location.href="<c:url value='/boardRegisterGet'/>"; // GET
+       location.href="${cpath}/boardRegisterGet";
      }
   </script>
 </head>
@@ -35,10 +42,13 @@
     <c:forEach var="vo" items="${blist}">
       <tr>
         <td>${vo.num}</td>
-        <td><a href="/s/boardView?num=${vo.num}">${vo.title}</a></td>
+        <!--
+        <td><a href="<c:url value='/boardView?num=${vo.num}'/>">${vo.title}</a></td>
+        -->
+        <td><a href="${cpath}/boardView?num=${vo.num}">${vo.title}</a></td>
         <td>${vo.writer}</td>
         <td>${vo.count}</td>
-        <td>${vo.indate}</td>
+        <td><fmt:formatDate value="${vo.indate}" pattern="yyyy-MM-dd"/></td>
       </tr>
     </c:forEach>
     </tbody>

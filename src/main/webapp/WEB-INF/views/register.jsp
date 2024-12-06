@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="cpath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
 
 <div class="container mt-5">
   <h2>Board Register</h2>
-  <form action="/s/boardRegisterPost" method="post">
+  <form action="${cpath}/boardRegisterPost" method="post">
     <div class="form-group">
       <label for="title">제목:</label>
       <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">

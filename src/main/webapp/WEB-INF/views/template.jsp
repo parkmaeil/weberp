@@ -1,6 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}"/>
+<%
+   pageContext.setAttribute("newLine", "\n");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,20 +20,16 @@
 <body>
 
 <div class="container mt-5">
-  <h2>Board Modify</h2>
-  <form action="<c:url value='/boardModifyPost'/>" method="post">
-    <input type="hidden" name="num" value="${board.num}"/>
-    <div class="form-group">
-      <label for="title">제목:</label>
-      <input type="text" class="form-control" id="title" value="${board.title}" name="title">
+  <h2>WEB Book System</h2>
+  <div class="card">
+    <div class="card-header">Book Main</div>
+    <div class="card-body">
+      <!-- 여기에 변경되는 콘텐츠를 만드세요 -->
     </div>
-    <div class="form-group">
-      <label for="content">내용:</label>
-      <textarea rows="7" class="form-control" id="content" name="content">${board.content}</textarea>
+    <div class="card-footer">
+      <jsp:include page="footer.jsp"/>
     </div>
-    <button type="submit" class="btn btn-primary btn-sm">수정</button>
-    <button type="reset" class="btn btn-warning btn-sm">취소</button>
-  </form>
+  </div>
 </div>
 
 </body>

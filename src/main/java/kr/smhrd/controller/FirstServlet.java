@@ -1,6 +1,7 @@
 package kr.smhrd.controller;
 import kr.smhrd.util.MyCalc;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -20,21 +21,8 @@ public class FirstServlet extends HttpServlet {
     @Override
     public void service(HttpServletRequest req, HttpServletResponse resp)
                                   throws ServletException, IOException {
-        // 1. 클라이언트의 요청(GET, POST)을 받기
-        int su1=Integer.parseInt(req.getParameter("su1")); // su1="5" -> 5
-        int su2=Integer.parseInt(req.getParameter("su2")); // su2="500" -> 500
-        // 2. 처리(직접처리보다는 Model과 연동) : 비즈니스로직
-        // 1~100=?
-        MyCalc my=new MyCalc();
-        int sum=my.hap(su1, su2);
-        // 3. 요청한 클라이언트로 응답하는 부분(View) : 프리젠테이션로직 --> JSP
-                             // MIME type
-        resp.setContentType("text/html;charset=utf-8");
-        PrintWriter out=resp.getWriter();
-        out.println("<html>");
-        out.println("<body>");
-        out.println("총합:"+sum); // 총합:5050
-        out.println("</body>");
-        out.println("</html>");
+
+        RequestDispatcher rd =req.getRequestDispatcher("/WEB-INF/views/template.jsp");
+        rd.forward(req, resp);
     }
 }
