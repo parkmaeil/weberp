@@ -1,5 +1,6 @@
 package kr.smhrd.controller;
 
+import kr.smhrd.config.ViewResolver;
 import kr.smhrd.entity.Board;
 import kr.smhrd.repository.BoardDAO;
 
@@ -22,8 +23,8 @@ public class BoardViewController extends HttpServlet {
         Board board=dao.findById(num);
         // 상세보기 페이지로 forward
         req.setAttribute("board", board);
-        RequestDispatcher rd =req.getRequestDispatcher("/WEB-INF/views/view.jsp");
+        String viewPage= ViewResolver.makeURL("view");
+        RequestDispatcher rd =req.getRequestDispatcher(viewPage);
         rd.forward(req, resp); //--------------------------------------------|
     }
 }
-

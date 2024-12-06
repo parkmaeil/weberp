@@ -1,5 +1,6 @@
 package kr.smhrd.controller;
 
+import kr.smhrd.config.ViewResolver;
 import kr.smhrd.entity.Board;
 import kr.smhrd.repository.BoardDAO;
 
@@ -23,7 +24,8 @@ public class BoardModifyController extends HttpServlet {
         Board board=dao.findById(num);
         req.setAttribute("board", board); // ${requestScope.board.num}
         // 수정화면으로 페이지를 전환(forward)
-        RequestDispatcher rd=req.getRequestDispatcher("/WEB-INF/views/modify.jsp");
+        String viewPage= ViewResolver.makeURL("modify");
+        RequestDispatcher rd=req.getRequestDispatcher(viewPage);
         rd.forward(req, resp);
     }
 }

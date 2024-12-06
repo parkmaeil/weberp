@@ -21,7 +21,8 @@ public class BoardRemoveController extends HttpServlet {
         BoardDAO dao=new BoardDAO();
         dao.deleteById(num); // 삭제성공
         // 삭제성공 후 다시 리스트 페이지로 이동?
-        resp.sendRedirect("/s/boardList");
+        String cpath=req.getContextPath();
+        resp.sendRedirect(cpath+"/boardList");
     }
 }
 

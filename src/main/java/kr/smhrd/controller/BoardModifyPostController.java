@@ -34,6 +34,7 @@ public class BoardModifyPostController extends HttpServlet {
 
         // 수정성공 후에 다시 어디로 가야될까? /boardVView
         // 등록이 끝났으나까 리스트를 보여주는 컨트롤러로 요청을 돌려줄께 거기서 응답을 해줄께야
-        resp.sendRedirect("/s/boardView?num="+num);
+        String cpath=req.getContextPath(); // /s
+        resp.sendRedirect(cpath+"/boardView?num="+num);
     }
 }

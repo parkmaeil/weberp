@@ -1,5 +1,6 @@
 package kr.smhrd.controller;
 
+import kr.smhrd.config.ViewResolver;
 import kr.smhrd.entity.Board;
 import kr.smhrd.repository.BoardDAO;
 
@@ -29,7 +30,10 @@ public class BoardListController extends HttpServlet {
         // boardList.jsp 페이지와 연동(forward, dispatcher)
         req.setAttribute("blist", blist); // 객체바인딩
         // 1. 요청을 의뢰할 view(jsp)를 선택한다.
-        RequestDispatcher rd=req.getRequestDispatcher("/WEB-INF/views/boardList.jsp");
+        // + ViewResolver(뷰의 경로를 만들어 주는 클래스)
+        // boardList : 뷰의 논리적인 이름-->/WEB-INF/views/boardList.jsp
+        String viewPage=ViewResolver.makeURL("boardList");
+        RequestDispatcher rd=req.getRequestDispatcher(viewPage);
         // 2. 실제로 요청을 의뢰를 하자(forward)                 ↑
         rd.forward(req,resp); //-----------------------------|
     }

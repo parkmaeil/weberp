@@ -1,5 +1,7 @@
 package kr.smhrd.controller;
 
+import kr.smhrd.config.ViewResolver;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +16,8 @@ public class BoardRegisterController extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse resp)
                                throws ServletException, IOException {
         // forward
-        RequestDispatcher rd =req.getRequestDispatcher("/WEB-INF/views/register.jsp");
+        String viewPage= ViewResolver.makeURL("register");
+        RequestDispatcher rd =req.getRequestDispatcher(viewPage);
         rd.forward(req,resp);
     }
 }
